@@ -2,9 +2,9 @@
 Final exam, problem 3.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  May 2018.
+         their colleagues and Bowen Li.  May 2018.
 
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 import time
@@ -74,7 +74,7 @@ def problem3(point, circle1, circle2, window):
             -- one from the center of circle1 to the center of circle2
             -- one from the center of circle2 to the given rg.Point
          where the color of each of those lines is the same color
-         as the fill color of circle2.
+         as the fill color of circle1.
       -- Then draws 3 more rg.Lines:
             -- one from the midpoint of the 1st line above
                  to the midpoint of the 2nd line above
@@ -93,11 +93,38 @@ def problem3(point, circle1, circle2, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
+    point.attach_to(window)
+    circle1.attach_to(window)
+    circle2.attach_to(window)
 
+    line1_1 = rg.Line(point,circle1.center)
+    line1_1.color = circle1.fill_color
+    line1_1.attach_to(window)
 
+    line1_2 = rg.Line(circle1.center,circle2.center)
+    line1_2.color = circle1.fill_color
+    line1_2.attach_to(window)
+
+    line1_3 = rg.Line(circle2.center,point)
+    line1_3.color = circle1.fill_color
+    line1_3.attach_to(window)
+
+    line2_1 = rg.Line(line1_1.get_midpoint(),line1_2.get_midpoint())
+    line2_1.color = circle2.fill_color
+    line2_1.attach_to(window)
+
+    line2_2 = rg.Line(line1_2.get_midpoint(), line1_3.get_midpoint())
+    line2_2.color = circle2.fill_color
+    line2_2.attach_to(window)
+
+    line2_3 = rg.Line(line1_3.get_midpoint(), line1_1.get_midpoint())
+    line2_3.color = circle2.fill_color
+    line2_3.attach_to(window)
+
+    window.render()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # The   try .. except   prevents error messages on the console from being
