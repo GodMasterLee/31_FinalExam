@@ -136,7 +136,7 @@ def problem5(m, numbers1, numbers2):
       :type [str]
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
     new = []
@@ -148,16 +148,21 @@ def problem5(m, numbers1, numbers2):
                         new.append(numbers1[k])
                         new.append(numbers2[k])
                         return new
+        return new
+
     else:
         for k in range(len(numbers1)):
             if numbers1[k] == 0:
                 if numbers2[k] == 0:
                     return [numbers1[k],numbers2[k]]
+
         for j in range(len(numbers1)):
-            if numbers2[j] / numbers1[j] == 0:
-                new.append(numbers1[j])
-                new.append(numbers2[j])
-                return new
+            if numbers1[j] != 0:
+                if numbers2[j] / numbers1[j] == 0:
+                    new.append(numbers1[j])
+                    new.append(numbers2[j])
+                    return new
+        return new
 ###############################################################################
 # Our tests use the following to print error messages in red.
 # Do NOT change it.  You do NOT have to do anything with it.
