@@ -2,9 +2,9 @@
 Final exam, problem 5.
 
 Authors: David Mutchler, Dave Fisher, Matt Boutell, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.  May 2018.
+         their colleagues and Bowen Li.  May 2018.
 
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import time
 import testing_helper
@@ -139,8 +139,25 @@ def problem5(m, numbers1, numbers2):
     # TODO: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
-
-
+    new = []
+    if m != 0:
+        for k in range(len(numbers1)):
+            if numbers1[k] != 0:
+                if numbers2[k] != 0:
+                    if numbers2[k] / numbers1[k] == m:
+                        new.append(numbers1[k])
+                        new.append(numbers2[k])
+                        return new
+    else:
+        for k in range(len(numbers1)):
+            if numbers1[k] == 0:
+                if numbers2[k] == 0:
+                    return [numbers1[k],numbers2[k]]
+        for j in range(len(numbers1)):
+            if numbers2[j] / numbers1[j] == 0:
+                new.append(numbers1[j])
+                new.append(numbers2[j])
+                return new
 ###############################################################################
 # Our tests use the following to print error messages in red.
 # Do NOT change it.  You do NOT have to do anything with it.
